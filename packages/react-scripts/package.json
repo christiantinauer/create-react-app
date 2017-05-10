@@ -5,7 +5,7 @@
   "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "bugs": {
     "url": "https://github.com/christiantinauer/create-react-app/issues"
