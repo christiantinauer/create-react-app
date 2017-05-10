@@ -1,14 +1,14 @@
 {
-  "name": "react-scripts",
-  "version": "0.9.4",
+  "name": "awesome-react-scripts",
+  "version": "0.1.0",
   "description": "Configuration and scripts for Create React App.",
-  "repository": "facebookincubator/create-react-app",
+  "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",
   "engines": {
     "node": ">=4"
   },
   "bugs": {
-    "url": "https://github.com/facebookincubator/create-react-app/issues"
+    "url": "https://github.com/christiantinauer/create-react-app/issues"
   },
   "files": [
     "bin",
@@ -18,10 +18,11 @@
     "utils"
   ],
   "bin": {
-    "react-scripts": "./bin/react-scripts.js"
+    "react-scripts": "./bin/awesome-react-scripts.js"
   },
   "dependencies": {
     "autoprefixer": "6.7.7",
+    "awesome-typescript-loader": "3.1.3",
     "babel-core": "6.23.1",
     "babel-eslint": "7.1.1",
     "babel-jest": "18.0.0",
@@ -53,6 +54,11 @@
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
     "style-loader": "0.16.1",
+    "tslint": "5.2.0",
+    "tslint-config-react-app": "0.1.0",
+    "tslint-loader": "3.5.3",
+    "tslint-react": "3.0.0",
+    "typescript": "2.3.2",
     "url-loader": "0.5.8",
     "webpack": "2.4.1",
     "webpack-dev-server": "2.4.4",
