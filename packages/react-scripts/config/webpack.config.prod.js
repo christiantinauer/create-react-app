@@ -92,7 +92,7 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['.js', '.json', '.jsx'],
+    extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
     alias: {
       // @remove-on-eject-begin
       // Resolve Babel runtime relative to react-scripts.
@@ -115,6 +115,7 @@ module.exports = {
       // Make sure your source files are compiled, as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc),
     ],
+    symlinks: false,
   },
   module: {
     strictExportPresence: true,
@@ -147,6 +148,29 @@ module.exports = {
         ],
         include: paths.appSrc,
       },
+      // It's important to do this before TypeScript processes the TS.
+      {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [
+          {
+            // @remove-on-eject-begin
+            // Point TSLint to our predefined config.
+            options: {
+              // Extends is not supported in configuration option.
+              // So instead tslint.conf with extends is used.
+              // configuration: {
+              //   extends: 'tslint-config-react-app',
+              // },
+              configFile: path.join(paths.ownPath, 'config', 'tslint.json'),
+              tsConfigFile: path.join(paths.ownPath, 'config', 'tsconfig.json'),
+            },
+            // @remove-on-eject-end
+            loader: require.resolve('tslint-loader'),
+          },
+        ],
+        include: paths.appSrc,
+      },
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
       // The `exclude` list *must* be updated with every change to loader extensions.
@@ -159,6 +183,7 @@ module.exports = {
         exclude: [
           /\.html$/,
           /\.(js|jsx)$/,
+          /\.(ts|tsx)$/,
           /\.css$/,
           /\.json$/,
           /\.bmp$/,
@@ -192,6 +217,22 @@ module.exports = {
           presets: [require.resolve('babel-preset-react-app')],
         },
         // @remove-on-eject-end
+      },
+      // Process TS with TypeScript.
+      {
+        test: /\.(ts|tsx)$/,
+        include: paths.appSrc,
+        loader: require.resolve('awesome-typescript-loader'),
+        options: {
+          useBabel: true,
+          // @remove-on-eject-begin
+          babelOptions: {
+            babelrc: false,
+            presets: [require.resolve('babel-preset-react-app')],
+          },
+          configFileName: path.join(paths.ownPath, 'config', 'tsconfig.json'),
+          // @remove-on-eject-end
+        },
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
