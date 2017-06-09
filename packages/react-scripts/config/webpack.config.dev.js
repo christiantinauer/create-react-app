@@ -155,18 +155,15 @@ module.exports = {
         enforce: 'pre',
         use: [
           {
-            // @remove-on-eject-begin
             // Point TSLint to our predefined config.
             options: {
-              // Extends is not supported in configuration option.
-              // So instead tslint.conf with extends is used.
-              // configuration: {
-              //   extends: 'tslint-config-react-app',
-              // },
-              configFile: path.join(paths.ownPath, 'config', 'tslint.json'),
-              tsConfigFile: path.join(paths.ownPath, 'config', 'tsconfig.json'),
+              // true leads to error... need time to investigate
+              typeCheck: false,
+              // @remove-on-eject-begin
+              configFile: require.resolve('tslint-config-react-app'),
+              tsConfigFile: require.resolve('ts-config-react-app'),
+              // @remove-on-eject-end
             },
-            // @remove-on-eject-end
             loader: require.resolve('tslint-loader'),
           },
         ],
@@ -233,12 +230,13 @@ module.exports = {
         options: {
           useBabel: true,
           useCache: true,
+          transpileOnly: true,
           // @remove-on-eject-begin
           babelOptions: {
             babelrc: false,
             presets: [require.resolve('babel-preset-react-app')],
           },
-          configFileName: path.join(paths.ownPath, 'config', 'tsconfig.json'),
+          configFileName: require.resolve('ts-config-react-app'),
           // @remove-on-eject-end
         },
       },

@@ -1,19 +1,16 @@
 {
-  "name": "tslint-config-react-app",
+  "name": "ts-config-react-app",
   "version": "0.1.0",
-  "description": "TSLint configuration used by Create React App",
+  "description": "TS configuration used by Create React App",
   "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/christian/create-react-app/issues"
   },
   "files": [
-    "index.js"
+    "index.json"
   ],
   "peerDependencies": {
-    "tslint": "^5.4.3",
-    "tslint-eslint-rules": "^4.1.1",
-    "tslint-react": "^3.0.0",
     "typescript": "^2.3.4"
   }
 }
