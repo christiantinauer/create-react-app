@@ -156,7 +156,9 @@ module.exports = {
           {
             // Point TSLint to our predefined config.
             options: {
-              // true leads to error... need time to investigate
+              formatter: 'tslint',
+              formattersDirectory: __dirname + '/../utils/',
+              // typeCheck slows down the whole process, disabled rules which need type checking
               typeCheck: false,
               // @remove-on-eject-begin
               configFile: require.resolve('tslint-config-react-app'),
@@ -221,8 +223,10 @@ module.exports = {
         include: paths.appSrc,
         loader: require.resolve('awesome-typescript-loader'),
         options: {
+          silent: true,
           useBabel: true,
-          transpileOnly: true,
+          useTranspileModule: true,
+          transpileOnly: false,
           // @remove-on-eject-begin
           babelOptions: {
             babelrc: false,

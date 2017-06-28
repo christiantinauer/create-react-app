@@ -69,6 +69,9 @@ measureFileSizesBeforeBuild(paths.appBuild)
         console.log(
           'To ignore, add ' +
             chalk.cyan('// eslint-disable-next-line') +
+            ' in .js(x) files respectively ' +
+            chalk.cyan('// tslint-disable-next-line') +
+            ' in .ts(x) files' +
             ' to the line before.\n'
         );
       } else {
