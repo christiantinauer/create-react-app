@@ -46,9 +46,7 @@ module.exports = {
     'interface-over-type-literal': true,
     'jsdoc-format': true,
     'label-position': true,
-    'max-classes-per-file': {
-      options: [1],
-    },
+    'max-classes-per-file': false,
     'max-line-length': false,
     'member-access': true,
     'member-ordering': false,
@@ -73,7 +71,7 @@ module.exports = {
     'no-misused-new': true,
     'no-namespace': true,
     'no-parameter-properties': false,
-    'no-reference': false,
+    'no-reference': true,
     'no-reference-import': true,
     'no-shadowed-variable': true,
     'no-string-literal': true,
@@ -190,9 +188,9 @@ module.exports = {
       options: [
         'never',
         {
-          singleValue: true,
-          objectsInArrays: true,
-          arraysInArrays: true,
+          singleValue: false,
+          objectsInArrays: false,
+          arraysInArrays: false,
         },
       ],
     },
