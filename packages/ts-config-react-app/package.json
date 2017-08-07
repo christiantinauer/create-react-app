@@ -1,6 +1,6 @@
 {
   "name": "ts-config-react-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TS configuration used by Create React App",
   "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",
