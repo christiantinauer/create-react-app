@@ -1,6 +1,6 @@
 {
   "name": "awesome-react-scripts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Configuration and scripts for Create React App.",
   "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",
@@ -49,8 +49,8 @@
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.6",
     "promise": "7.1.1",
-    "react-dev-utils": "^3.0.1",
-    "react-error-overlay": "^1.0.8",
+    "react-dev-utils": "^3.0.2",
+    "react-error-overlay": "^1.0.9",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.3",
 		"ts-config-react-app": "file://psfile002/devshare/npm_packages/ts-config-react-app/ts-config-react-app-0.1.0.tgz",
