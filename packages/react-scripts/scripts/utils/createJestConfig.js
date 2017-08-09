@@ -59,6 +59,7 @@ module.exports = (resolve, rootDir, isEjecting) => {
       '.ts',
       '.web.tsx',
       '.tsx',
+      'node',
     ],
   };
   if (rootDir) {
