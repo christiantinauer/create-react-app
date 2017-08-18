@@ -232,7 +232,10 @@ module.exports = {
                 babelrc: false,
                 presets: [require.resolve('babel-preset-react-app')],
               },
-              configFileName: require.resolve('ts-config-react-app'),
+              configFileContent: {
+                extends: require.resolve('ts-config-react-app'),
+                files: [paths.appDeclarationTs],
+              },
               // @remove-on-eject-end
             },
           },

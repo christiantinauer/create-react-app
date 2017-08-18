@@ -93,7 +93,6 @@ module.exports = function(
 
   let command;
   let args;
-  let deps;
 
   if (useYarn) {
     command = 'yarnpkg';
@@ -102,7 +101,14 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  deps.push('react', 'react-dom');
+  args.push(
+    '@types/node',
+    '@types/react',
+    '@types/react-dom',
+    '@types/jest',
+    'react',
+    'react-dom'
+  );
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
@@ -111,7 +117,7 @@ module.exports = function(
   );
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath).dependencies;
-    deps = deps.concat(
+    args = args.concat(
       Object.keys(templateDependencies).map(key => {
         return `${key}@${templateDependencies[key]}`;
       })
@@ -123,40 +129,12 @@ module.exports = function(
   // which doesn't install react and react-dom along with react-scripts
   // or template is presetend (via --internal-testing-template)
   if (!isReactInstalled(appPackage) || template) {
-    console.log(`Installing ${deps.join(', ')} using ${command}...`);
+    console.log(`Installing react and react-dom using ${command}...`);
     console.log();
 
-    const proc = spawn.sync(command, args.concat(deps), { stdio: 'inherit' });
+    const proc = spawn.sync(command, args, { stdio: 'inherit' });
     if (proc.status !== 0) {
-      console.error(
-        `\`${command} ${args.join(' ')} ${deps.join(' ')}\` failed`
-      );
-      return;
-    }
-  }
-
-  if (!areTypesInstalled(appPackage)) {
-    const types = [
-      '@types/node',
-      '@types/react',
-      '@types/react-dom',
-      '@types/jest',
-    ];
-
-    if (useYarn) {
-      args = ['add', '--dev'];
-    } else {
-      args = ['install', '--save-dev', verbose && '--verbose'].filter(e => e);
-    }
-
-    console.log(`Installing ${types.join(', ')} using ${command}...`);
-    console.log();
-
-    const proc = spawn.sync(command, args.concat(types), { stdio: 'inherit' });
-    if (proc.status !== 0) {
-      console.error(
-        `\`${command} ${args.join(' ')} ${types.join(' ')}\` failed`
-      );
+      console.error(`\`${command} ${args.join(' ')}\` failed`);
       return;
     }
   }
@@ -219,18 +197,11 @@ function isReactInstalled(appPackage) {
   const dependencies = appPackage.dependencies || {};
 
   return (
+    typeof dependencies['@types/node'] !== 'undefined' &&
+    typeof dependencies['@types/react'] !== 'undefined' &&
+    typeof dependencies['@types/react-dom'] !== 'undefined' &&
+    typeof dependencies['@types/jest'] !== 'undefined' &&
     typeof dependencies.react !== 'undefined' &&
     typeof dependencies['react-dom'] !== 'undefined'
-  );
-}
-
-function areTypesInstalled(appPackage) {
-  const devDependencies = appPackage.devDependencies || {};
-
-  return (
-    typeof devDependencies['@types/node'] !== 'undefined' &&
-    typeof devDependencies['@types/react'] !== 'undefined' &&
-    typeof devDependencies['@types/react-dom'] !== 'undefined' &&
-    typeof devDependencies['@types/jest'] !== 'undefined'
   );
 }

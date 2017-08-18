@@ -1,32 +1,49 @@
 'use strict';
 
+const crypto = require('crypto');
+const fs = require('fs');
+
 const ts = require('typescript');
 const babelTransform = require('./babelTransform');
 
+const THIS_FILE = fs.readFileSync(__filename);
 const tsConfigCompilerOptions = ts.readConfigFile(
-  require.resolve('ts-config-react-app')
+  require.resolve('ts-config-react-app'),
+  path => ts.sys.readFile(path)
 ).config.compilerOptions;
 
 module.exports = {
-  process(src, path, config, options) {
-    if (path.endsWith('.ts') || path.endsWith('.tsx')) {
-      let compilerOptions = compilerConfig;
-      if (options.instrument) {
-        // inline source with source map for remapping coverage
-        compilerOptions = Object.assign({}, compilerConfig);
-        delete compilerOptions.sourceMap;
-        compilerOptions.inlineSourceMap = true;
-        compilerOptions.inlineSources = true;
-        // fix broken paths in coverage report if `.outDir` is set
-        delete compilerOptions.outDir;
-      }
+  canInstrument: true,
+  getCacheKey(fileData, filename, configString, transformOptions) {
+    return crypto
+      .createHash('md5')
+      .update(THIS_FILE)
+      .update('\0', 'utf8')
+      .update(fileData)
+      .update('\0', 'utf8')
+      .update(configString)
+      .update('\0', 'utf8')
+      .update(JSON.stringify(tsConfigCompilerOptions))
+      .update('\0', 'utf8')
+      .update(transformOptions.instrument ? 'instrument' : '')
+      .digest('hex');
+  },
+  process(src, filename, config, transformOptions) {
+    const isTsFile = filename.endsWith('.ts');
+    const isTsxFile = filename.endsWith('.tsx');
 
-      const tsTranspiled = tsc.transpileModule(src, {
-        compilerOptions: compilerOptions,
-        fileName: path,
+    if (isTsFile || isTsxFile) {
+      const tsTranspiled = ts.transpileModule(src, {
+        compilerOptions: tsConfigCompilerOptions,
+        fileName: filename,
       });
-      return tsTranspiled.outputText;
+
+      src = tsTranspiled.outputText;
+      filename =
+        filename.substring(0, filename.lastIndexOf('.')) +
+        (isTsFile ? '.js' : '.jsx');
     }
-    return src;
+
+    return babelTransform.process(src, filename, config, transformOptions);
   },
 };

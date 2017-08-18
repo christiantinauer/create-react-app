@@ -233,7 +233,10 @@ module.exports = {
                 compact: true,
               },
               // @remove-on-eject-begin
-              configFileName: require.resolve('ts-config-react-app'),
+              configFileContent: {
+                extends: require.resolve('ts-config-react-app'),
+                files: [paths.appDeclarationTs],
+              },
               // @remove-on-eject-end
             },
           },
