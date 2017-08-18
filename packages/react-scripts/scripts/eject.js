@@ -100,6 +100,12 @@ inquirer
     folders.forEach(verifyAbsent);
     files.forEach(verifyAbsent);
 
+    const tsConfigPath = path.join(appPath, 'tsconfig.json');
+    verifyAbsent(tsConfigPath);
+
+    const tsLintPath = path.join(appPath, 'tslint.json');
+    verifyAbsent(tsLintPath);
+
     // Prepare Jest config early in case it throws
     const jestConfig = createJestConfig(
       filePath => path.posix.join('<rootDir>', filePath),
@@ -213,6 +219,33 @@ inquirer
     fs.writeFileSync(
       path.join(appPath, 'package.json'),
       JSON.stringify(appPackage, null, 2) + '\n'
+    );
+    console.log();
+
+    // Configure TypeScript
+    console.log(cyan('Configuring TypeScript'));
+    console.log(`  Adding ${cyan('tsconfig.json')}`);
+    fs.writeFileSync(
+      tsConfigPath,
+      JSON.stringify(
+        {
+          extends: './node_modules/ts-config-react-app/index',
+          files: ['src/app.d.ts'],
+        },
+        null,
+        2
+      ) + '\n'
+    );
+    console.log(`  Adding ${cyan('tslint.json')}`);
+    fs.writeFileSync(
+      tsLintPath,
+      JSON.stringify(
+        {
+          extends: 'tslint-config-react-app',
+        },
+        null,
+        2
+      ) + '\n'
     );
     console.log();
 
