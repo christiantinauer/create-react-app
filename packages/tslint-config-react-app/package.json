@@ -1,6 +1,6 @@
 {
   "name": "tslint-config-react-app",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "TSLint configuration used by Create React App",
   "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",

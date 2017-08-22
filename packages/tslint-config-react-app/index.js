@@ -175,6 +175,8 @@ module.exports = {
     'jsx-curly-spacing': {
       options: ['never'],
     },
+    'jsx-equals-spacing': false,
+    'jsx-key': true,
     'jsx-no-bind': true,
     'jsx-no-lambda': false,
     'jsx-no-multiline-js': false,
