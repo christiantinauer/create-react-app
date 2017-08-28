@@ -71,6 +71,7 @@ module.exports = {
     'no-misused-new': true,
     'no-namespace': true,
     'no-parameter-properties': false,
+    'no-parameter-reassignment': false,
     'no-reference': true,
     'no-reference-import': true,
     'no-shadowed-variable': true,
