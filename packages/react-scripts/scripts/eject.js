@@ -230,7 +230,7 @@ inquirer
       JSON.stringify(
         {
           extends: './node_modules/ts-config-react-app/index',
-          files: ['src/app.d.ts'],
+          files: ['src/app-shim.d.ts'],
         },
         null,
         2
