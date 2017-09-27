@@ -225,6 +225,9 @@ module.exports = {
               useBabel: true,
               useTranspileModule: true,
               transpileOnly: false,
+              // @remove-on-eject-begin
+              babelCore: 'babel-core',
+              // @remove-on-eject-end
               babelOptions: {
                 // @remove-on-eject-begin
                 babelrc: false,

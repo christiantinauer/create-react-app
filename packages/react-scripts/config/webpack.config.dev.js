@@ -226,6 +226,7 @@ module.exports = {
               useTranspileModule: true,
               transpileOnly: false,
               // @remove-on-eject-begin
+              babelCore: 'babel-core',
               babelOptions: {
                 babelrc: false,
                 presets: [require.resolve('babel-preset-react-app')],
