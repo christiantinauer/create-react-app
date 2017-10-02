@@ -1,6 +1,6 @@
 {
   "name": "awesome-react-scripts",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Configuration and scripts for Create React App.",
   "repository": "christiantinauer/create-react-app",
   "license": "MIT",
@@ -58,7 +58,7 @@
     "tslint-eslint-rules": "4.1.1",
     "tslint-loader": "3.5.3",
     "tslint-react": "3.2.0",
-    "typescript": "2.5.2",
+    "typescript": "2.5.3",
     "url-loader": "0.5.9",
     "webpack": "3.5.1",
     "webpack-dev-server": "2.8.2",
