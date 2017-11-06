@@ -1,6 +1,6 @@
 {
   "name": "ts-config-react-app",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "TS configuration used by Create React App",
   "repository": "christiantinauer/create-react-app",
   "license": "BSD-3-Clause",
@@ -11,6 +11,6 @@
     "index.json"
   ],
   "peerDependencies": {
-    "typescript": "^2.5.2"
+    "typescript": "^2.6.1"
   }
 }
