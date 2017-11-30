@@ -177,8 +177,8 @@ module.exports = {
               // typeCheck slows down the whole process, disabled rules which need type checking
               typeCheck: false,
               // @remove-on-eject-begin
-              configFile: require.resolve('tslint-config-react-app'),
-              tsConfigFile: require.resolve('ts-config-react-app'),
+              configFile: require.resolve('tslint-config-typed-react-app'),
+              tsConfigFile: require.resolve('ts-config-typed-react-app'),
               // @remove-on-eject-end
             },
             loader: require.resolve('tslint-loader'),
@@ -218,29 +218,29 @@ module.exports = {
           {
             test: /\.(ts|tsx)$/,
             include: paths.appSrc,
-            loader: require.resolve('awesome-typescript-loader'),
-            options: {
-              silent: true,
-              useBabel: true,
-              useTranspileModule: true,
-              transpileOnly: false,
-              // @remove-on-eject-begin
-              babelCore: 'babel-core',
-              // @remove-on-eject-end
-              babelOptions: {
-                // @remove-on-eject-begin
-                babelrc: false,
-                presets: [require.resolve('babel-preset-react-app')],
-                // @remove-on-eject-end
-                compact: true,
+            use: [
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  // @remove-on-eject-begin
+                  babelrc: false,
+                  presets: [require.resolve('babel-preset-react-app')],
+                  // @remove-on-eject-end
+                  compact: true,
+                },
               },
-              // @remove-on-eject-begin
-              configFileContent: {
-                extends: require.resolve('ts-config-react-app'),
-                files: [paths.appDeclarationTs],
+              {
+                loader: require.resolve('ts-loader'),
+                options: {
+                  silent: true,
+                  onlyCompileBundledFiles: true,
+                  // @remove-on-eject-begin
+                  configFile: require.resolve('ts-config-typed-react-app'),
+                  contextAsConfigBasePath: true,
+                  // @remove-on-eject-end
+                },
               },
-              // @remove-on-eject-end
-            },
+            ],
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.

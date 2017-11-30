@@ -1,14 +1,14 @@
 {
-  "name": "awesome-react-scripts",
-  "version": "0.3.6",
-  "description": "Configuration and scripts for Create React App.",
-  "repository": "christiantinauer/create-react-app",
+  "name": "typed-react-scripts",
+  "version": "0.1.0",
+  "description": "Configuration and scripts for Create Typed React App.",
+  "repository": "christiantinauer/create-typed-react-app",
   "license": "MIT",
   "engines": {
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/christiantinauer/create-react-app/issues"
+    "url": "https://github.com/christiantinauer/create-typed-react-app/issues"
   },
   "files": [
     "bin",
@@ -18,12 +18,11 @@
     "utils"
   ],
   "bin": {
-    "awesome-react-scripts": "./bin/awesome-react-scripts.js"
+    "typed-react-scripts": "./bin/typed-react-scripts.js"
   },
   "dependencies": {
     "autoprefixer": "7.1.6",
-		"awesome-typescript-loader": "file://psfile002/devshare/npm_packages/awesome-typescript-loader/awesome-typescript-loader-3.4.0.tgz",
-    "babel-core": "6.26.0",
+		"babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
@@ -53,13 +52,14 @@
     "react-dev-utils": "^4.2.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
-		"ts-config-react-app": "file://psfile002/devshare/npm_packages/ts-config-react-app/ts-config-react-app-0.3.3.tgz",
+    "ts-config-typed-react-app": "file://psfile002/devshare/npm_packages/ts-config-typed-react-app/ts-config-typed-react-app-0.1.0.tgz",
+    "ts-loader": "3.2.0",
     "tslint": "5.8.0",
-    "tslint-config-react-app": "file://psfile002/devshare/npm_packages/tslint-config-react-app/tslint-config-react-app-0.3.2.tgz",
+    "tslint-config-typed-react-app": "file://psfile002/devshare/npm_packages/tslint-config-typed-react-app/tslint-config-typed-react-app-0.1.0.tgz",
     "tslint-eslint-rules": "4.1.1",
     "tslint-loader": "3.5.3",
     "tslint-react": "3.2.0",
-    "typescript": "2.6.1",
+    "typescript": "2.6.2",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",

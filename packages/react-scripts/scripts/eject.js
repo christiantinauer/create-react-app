@@ -229,8 +229,7 @@ inquirer
       tsConfigPath,
       JSON.stringify(
         {
-          extends: './node_modules/ts-config-react-app/index',
-          files: ['src/app-shim.d.ts'],
+          extends: './node_modules/ts-config-typed-react-app/index',
         },
         null,
         2
@@ -241,7 +240,7 @@ inquirer
       tsLintPath,
       JSON.stringify(
         {
-          extends: 'tslint-config-react-app',
+          extends: 'tslint-config-typed-react-app',
         },
         null,
         2

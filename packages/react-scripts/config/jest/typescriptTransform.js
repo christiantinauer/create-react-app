@@ -1,3 +1,12 @@
+// @remove-on-eject-begin
+/**
+ * Copyright (c) 2017-present, Christian Tinauer
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+// @remove-on-eject-end
+
 'use strict';
 
 const crypto = require('crypto');
@@ -61,7 +70,7 @@ module.exports = createTransformer(
   parseTsConfig(
     fs.existsSync(ejectedTsConfigPath)
       ? ejectedTsConfigPath
-      : require.resolve('ts-config-react-app'),
+      : require.resolve('ts-config-typed-react-app'),
     appPath
   ).options
 );
@@ -69,6 +78,6 @@ module.exports = createTransformer(
 // @remove-on-eject-begin
 module.exports = createTransformer(
   require('./babelTransform'),
-  parseTsConfig(require.resolve('ts-config-react-app'), appPath).options
+  parseTsConfig(require.resolve('ts-config-typed-react-app'), appPath).options
 );
 // @remove-on-eject-end

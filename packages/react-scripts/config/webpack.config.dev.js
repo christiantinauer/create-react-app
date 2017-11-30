@@ -17,7 +17,6 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const { CheckerPlugin } = require('awesome-typescript-loader');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -170,8 +169,8 @@ module.exports = {
               // typeCheck slows down the whole process, disabled rules which need type checking
               typeCheck: false,
               // @remove-on-eject-begin
-              configFile: require.resolve('tslint-config-react-app'),
-              tsConfigFile: require.resolve('ts-config-react-app'),
+              configFile: require.resolve('tslint-config-typed-react-app'),
+              tsConfigFile: require.resolve('ts-config-typed-react-app'),
               // @remove-on-eject-end
             },
             loader: require.resolve('tslint-loader'),
@@ -215,25 +214,32 @@ module.exports = {
           {
             test: /\.(ts|tsx)$/,
             include: paths.appSrc,
-            loader: require.resolve('awesome-typescript-loader'),
-            options: {
-              silent: true,
-              useBabel: true,
-              useCache: true,
-              useTranspileModule: true,
-              transpileOnly: false,
-              // @remove-on-eject-begin
-              babelCore: 'babel-core',
-              babelOptions: {
-                babelrc: false,
-                presets: [require.resolve('babel-preset-react-app')],
+            use: [
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  // @remove-on-eject-begin
+                  babelrc: false,
+                  presets: [require.resolve('babel-preset-react-app')],
+                  // @remove-on-eject-end
+                  // This is a feature of `babel-loader` for webpack (not Babel itself).
+                  // It enables caching results in ./node_modules/.cache/babel-loader/
+                  // directory for faster rebuilds.
+                  cacheDirectory: true,
+                },
               },
-              configFileContent: {
-                extends: require.resolve('ts-config-react-app'),
-                files: [paths.appDeclarationTs],
+              {
+                loader: require.resolve('ts-loader'),
+                options: {
+                  silent: true,
+                  onlyCompileBundledFiles: true,
+                  // @remove-on-eject-begin
+                  configFile: require.resolve('ts-config-typed-react-app'),
+                  contextAsConfigBasePath: true,
+                  // @remove-on-eject-end
+                },
               },
-              // @remove-on-eject-end
-            },
+            ],
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -327,10 +333,6 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // `CheckerPlugin` is optional. Use it if you want async error reporting.
-    // We need this plugin to detect a `--watch` mode. It may be removed later
-    // after https://github.com/webpack/webpack/issues/3460 will be resolved.
-    new CheckerPlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

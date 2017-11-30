@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017-present, Christian Tinauer.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 {
   "compilerOptions": {
     /* Basic Options */
@@ -57,5 +64,8 @@
     /* Experimental Options */
     "experimentalDecorators": true,           /* Enables experimental support for ES7 decorators. */
     "emitDecoratorMetadata": true             /* Enables experimental support for emitting type metadata for decorators. */
-	}
+  },
+  "files": [
+    "./src/app-shim.d.ts"
+  ]
 }
