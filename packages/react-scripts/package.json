@@ -2,13 +2,13 @@
   "name": "typed-react-scripts",
   "version": "0.1.0",
   "description": "Configuration and scripts for Create Typed React App.",
-  "repository": "christiantinauer/create-typed-react-app",
+  "repository": "coplanner/create-typed-react-app",
   "license": "MIT",
   "engines": {
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/christiantinauer/create-typed-react-app/issues"
+    "url": "https://github.com/coplanner/create-typed-react-app/issues"
   },
   "files": [
     "bin",
@@ -55,11 +55,11 @@
     "sw-precache-webpack-plugin": "0.11.4",
     "ts-config-typed-react-app": "file://psfile002/devshare/npm_packages/ts-config-typed-react-app/ts-config-typed-react-app-0.1.0.tgz",
     "ts-loader": "file://psfile002/devshare/npm_packages/ts-loader/ts-loader-3.2.0.tgz",
-    "tslint": "5.8.0",
+    "tslint": "5.9.1",
     "tslint-config-typed-react-app": "file://psfile002/devshare/npm_packages/tslint-config-typed-react-app/tslint-config-typed-react-app-0.1.0.tgz",
     "tslint-eslint-rules": "4.1.1",
     "tslint-loader": "3.5.3",
-    "tslint-react": "3.2.0",
+    "tslint-react": "3.4.0",
     "typescript": "2.6.2",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
