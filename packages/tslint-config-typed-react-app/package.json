@@ -2,7 +2,7 @@
   "name": "tslint-config-typed-react-app",
   "version": "0.1.0",
   "description": "TSLint configuration used by Create Typed React App",
-  "repository": "christiantinauer/create-typed-react-app",
+  "repository": "coplanner/create-typed-react-app",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/christian/create-typed-react-app/issues"
@@ -11,9 +11,9 @@
     "index.js"
   ],
   "peerDependencies": {
-    "tslint": "^5.8.0",
+    "tslint": "^5.9.1",
     "tslint-eslint-rules": "^4.1.1",
-    "tslint-react": "^3.2.0",
+    "tslint-react": "^3.4.0",
     "typescript": "^2.6.2"
   }
 }
