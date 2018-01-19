@@ -5,7 +5,7 @@
   "repository": "coplanner/create-typed-react-app",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/christian/create-typed-react-app/issues"
+    "url": "https://github.com/coplanner/create-typed-react-app/issues"
   },
   "files": [
     "index.json"
