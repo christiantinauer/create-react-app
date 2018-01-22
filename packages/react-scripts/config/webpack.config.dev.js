@@ -235,7 +235,7 @@ module.exports = {
                   onlyCompileBundledFiles: true,
                   // @remove-on-eject-begin
                   configFile: require.resolve('ts-config-typed-react-app'),
-                  contextAsConfigBasePath: true,
+                  context: paths.appPath,
                   // @remove-on-eject-end
                 },
               },
