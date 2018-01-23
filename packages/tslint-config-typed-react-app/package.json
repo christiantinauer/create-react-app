@@ -1,6 +1,6 @@
 {
   "name": "tslint-config-typed-react-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TSLint configuration used by Create Typed React App",
   "repository": "coplanner/create-typed-react-app",
   "license": "MIT",
