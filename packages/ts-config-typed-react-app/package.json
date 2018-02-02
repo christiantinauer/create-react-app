@@ -1,6 +1,6 @@
 {
   "name": "ts-config-typed-react-app",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "TS configuration used by Create Typed React App",
   "repository": "coplanner/create-typed-react-app",
   "license": "MIT",
@@ -11,6 +11,6 @@
     "index.json"
   ],
   "peerDependencies": {
-    "typescript": "^2.6.2"
+    "typescript": "^2.7.1"
   }
 }
