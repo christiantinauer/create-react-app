@@ -11,6 +11,6 @@
     "index.json"
   ],
   "peerDependencies": {
-    "typescript": "^2.7.1"
+    "typescript": "^2.7.2"
   }
 }
