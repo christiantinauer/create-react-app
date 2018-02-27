@@ -153,7 +153,6 @@ module.exports = {
         },
       ],
     },
-    'typeof-compare': true,
     'unified-signatures': true,
     'use-isnan': true,
     'variable-name': {
